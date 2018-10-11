@@ -1,0 +1,58 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 24px;
+}
+
+/* ready state */
+
+.ready-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 48px;
+  margin: 30px 0px;
+}
+
+.typing-gif {
+  border-radius: 10px;
+}
+
+.go-button {
+  margin: 20px;
+  background: #0ecc88;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.go-button:hover {
+  background: #099c67;
+}
+
+/* playing state */
+
+.playing-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.current-goal {
+  margin-bottom: 20px;
+}
+
+.typing-container {
+  display: flex;
+}
+
+.typing-area {
+  white-space: pre;
+}
+
