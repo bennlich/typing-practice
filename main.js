@@ -13,7 +13,7 @@ document.addEventListener('keydown', function(keyEvent) {
     // do nothing when people press special keys like 'Alt' and 'Tab'
   }
   else {
-    if (!keyEvent.ctrlKey) { 
+    if (!keyEvent.ctrlKey) {
       // Don't trigger any browser shortcuts (e.g. scrolling the page up or down,
       // opening find-in-page, going backwards in browser history, etc.) unless
       // the "Control" key is pressed.
@@ -24,9 +24,9 @@ document.addEventListener('keydown', function(keyEvent) {
     userInput = userInput + keyEvent.key;
   }
 
-  if (userInput === currentGoal.text) {
+  if (userInput === currentGoal) {
     // the input matches the goal text!
-    numCorrectChars += currentGoal.text.length;
+    numCorrectChars += currentGoal.length;
 
     //generate a new goal
     currentGoal = nextGoal();
@@ -56,7 +56,7 @@ function drawTextInput() {
 }
 
 function drawCurrentGoal() {
-  document.querySelector('.current-goal').innerText = currentGoal.text;
+  document.querySelector('.current-goal').innerText = currentGoal;
 }
 
 function drawCharsPerMinute() {
