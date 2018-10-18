@@ -28,8 +28,11 @@ document.addEventListener('keydown', function(keyEvent) {
     // the input matches the goal text!
     numCorrectChars += currentGoal.length;
 
-    //generate a new goal
+    // generate a new goal
     currentGoal = nextGoal();
+
+    // fetch a new gif
+    newRandomGif();
 
     // reset userInput
     userInput = '';
@@ -87,6 +90,19 @@ function startWPMClock() {
   timeStarted = Date.now();
 }
 
+function newRandomGif() {
+  // This uses the giphy API to fetch a random gid in the 'keyboard' category
+  // See: https://developers.giphy.com/docs/
+  var randomGifEl = document.getElementById('random-gif');
+  var tag = 'keyboard';
+  var giphyUrl = `http://api.giphy.com/v1/gifs/random?api_key=5b0nNuo3w2Q52LxayxK1BIZaf0NWyOL9&tag=${tag}`;
+  fetch(giphyUrl).then(function(result) {
+    result.json().then(function(resultJson) {
+      randomGifEl.src = resultJson.data.image_url;
+    });
+  });
+}
+
 function setup() {
   // Blink the cursor every 500ms
   var cursor = document.querySelector('.cursor');
@@ -102,6 +118,9 @@ function setup() {
 
   // Update the wordsPerMinute readout every 500ms
   setInterval(drawCharsPerMinute, 500);
+
+  // Start off by preloading a random gif
+  newRandomGif();
 
   currentGoal = nextGoal();
   drawPage();

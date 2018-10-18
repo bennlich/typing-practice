@@ -47,6 +47,10 @@ body {
   margin-bottom: 30px;
 }
 
+#random-gif {
+  height: 200px;
+}
+
 .current-goal {
   margin-bottom: 20px;
 }
