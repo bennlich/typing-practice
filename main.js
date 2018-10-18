@@ -2,6 +2,8 @@ var userInput = '';
 var currentGoal;
 var states = ['ready', 'playing'];
 var state = 'ready';
+var numCorrectChars = 0;
+var timeStarted;
 
 document.addEventListener('keydown', function(keyEvent) {
   if (keyEvent.key ==='Backspace') {
@@ -24,6 +26,7 @@ document.addEventListener('keydown', function(keyEvent) {
 
   if (userInput === currentGoal.text) {
     // the input matches the goal text!
+    numCorrectChars += currentGoal.text.length;
 
     //generate a new goal
     currentGoal = nextGoal();
@@ -56,6 +59,12 @@ function drawCurrentGoal() {
   document.querySelector('.current-goal').innerText = currentGoal.text;
 }
 
+function drawCharsPerMinute() {
+  // convert milliseconds to minutes
+  var elapsedMinutes = (Date.now() - timeStarted + 1) / 1000 / 60.0;
+  document.querySelector('.chars-per-minute').innerText = 'CHARACTERS PER MINUTE: ' + Math.round(numCorrectChars / elapsedMinutes);
+}
+
 function nextGoal() {
   // Generate a random number between [0, vocabList.length]
   var randomIndex = Math.random() * vocabList.length;
@@ -69,7 +78,13 @@ function nextGoal() {
 
 function startGame() {
   state = 'playing';
+  startWPMClock();
+  drawCharsPerMinute();
   drawPage();
+}
+
+function startWPMClock() {
+  timeStarted = Date.now();
 }
 
 function setup() {
@@ -84,6 +99,9 @@ function setup() {
     }
   };
   setInterval(blinkCursor, 500);
+
+  // Update the wordsPerMinute readout every 500ms
+  setInterval(drawCharsPerMinute, 500);
 
   currentGoal = nextGoal();
   drawPage();

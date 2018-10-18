@@ -42,6 +42,11 @@ body {
   margin-top: 80px;
 }
 
+.chars-per-minute {
+  font-size: 68px;
+  margin-bottom: 30px;
+}
+
 .current-goal {
   margin-bottom: 20px;
 }
