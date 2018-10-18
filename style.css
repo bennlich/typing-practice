@@ -59,3 +59,9 @@ body {
   white-space: pre;
 }
 
+.github-link {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 18px;
+}
