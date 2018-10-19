@@ -95,7 +95,7 @@ function newRandomGif() {
   // See: https://developers.giphy.com/docs/
   var randomGifEl = document.getElementById('random-gif');
   var tag = 'keyboard';
-  var giphyUrl = `http://api.giphy.com/v1/gifs/random?api_key=5b0nNuo3w2Q52LxayxK1BIZaf0NWyOL9&tag=${tag}`;
+  var giphyUrl = `https://api.giphy.com/v1/gifs/random?api_key=5b0nNuo3w2Q52LxayxK1BIZaf0NWyOL9&tag=${tag}`;
   fetch(giphyUrl).then(function(result) {
     result.json().then(function(resultJson) {
       randomGifEl.src = resultJson.data.image_url;
